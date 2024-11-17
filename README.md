@@ -25,3 +25,9 @@ Mise en place d'une application de fast food en utilisant React, NextJS, Tailwin
 ## Installation
     npx shadcn@latest init
  
+# Authentification avec clerk
+   * Clerk est une suite complète d’interfaces utilisateur intégrables, d’API flexibles et de tableaux de bord d’administration pour authentifier et gérer vos utilisateurs.
+   * Il suffit de partir sur leur site web créer une nouvelle application puis recupèrer les clés api.
+   * Par la suite, il faut télécharger clerk.
+    npm install @clerk/nextjs
+   * Enfin, on regarde la documentation pour continuer.
