@@ -17,6 +17,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "baseUrl": ".",  // Définir la base des chemins relatifs
+    "paths": {
+      "@/*": ["./*"]  // Alias pour tout le projet
+    },
     "plugins": [
       {
         "name": "next"
