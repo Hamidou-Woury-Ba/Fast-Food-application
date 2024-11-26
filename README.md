@@ -34,3 +34,6 @@ Mise en place d'une application de fast food en utilisant React, NextJS, Tailwin
 
 # HyperUI
     HyperUI est une collection de composants CSS Tailwind gratuits qui peuvent être utilisés dans notre prochain projet.
+
+# Lucid dev
+    Contient des icônes

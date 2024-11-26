@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import Provider  from "./Provider"
 
 // Les polices locales sont chargées ici
 const geistSans = localFont({
@@ -28,7 +29,9 @@ export default function RootLayout({ children }) {
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`} // Les polices locales sont appliquées ici 
         >
-          {children} {/* Les enfants sont rendus ici */}
+          <Provider>
+            {children} {/* les composants enfants sont rendus ici */}
+          </Provider>
         </body>
       </html>
     </ClerkProvider>
