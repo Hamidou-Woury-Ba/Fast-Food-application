@@ -37,3 +37,16 @@ Mise en place d'une application de fast food en utilisant React, NextJS, Tailwin
 
 # Lucid dev
     Contient des icônes
+
+# Hygraph
+    Hygraph (anciennement connu sous le nom de GraphCMS) est une plateforme de gestion de contenu (CMS) orientée GraphQL. Elle permet aux développeurs et aux entreprises de gérer, organiser et distribuer du contenu via une API GraphQL performante, tout en offrant une interface utilisateur intuitive pour les équipes non techniques.
+
+# La librairie graphql-request
+    Client GraphQL minimal prenant en charge Node et navigateurs pour les scripts ou les applications simples.
+ * Installation 
+    npm add graphql-request graphql
+
+#   tailwind-scrollbar-hide
+    Plugin Tailwind pour masquer les barres de défilement, bien que l’élément puisse toujours être défilé si le contenu de l’élément déborde.
+ * Installation 
+    npm i tailwind-scrollbar-hide
