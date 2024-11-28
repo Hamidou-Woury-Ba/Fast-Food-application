@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Skeleton de la liste des restaurants populaires
 function BusinessItemSkeleton() {
   return (
     <div>
@@ -9,8 +10,9 @@ function BusinessItemSkeleton() {
       </div>
 
       <div className='w-full h-5 bg-slate-200 animate-pulse mt-3 rounded-md'>
-
+        
       </div>
+
     </div>
   )
 }

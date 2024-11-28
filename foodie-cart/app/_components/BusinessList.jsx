@@ -26,7 +26,7 @@ function BusinessList() {
         setLoading(true)
         GlobalApi.getBusiness(category_)
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 setBusinessList(res?.restaurants)
                 setLoading(false)
             });

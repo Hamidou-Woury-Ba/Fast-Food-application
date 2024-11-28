@@ -31,7 +31,7 @@ function CategoryList() {
   const getCategoryList = () => {
     GlobalApi.getCategory()
       .then((res) => {
-        console.log(res.categories)
+        // console.log(res.categories)
         setCategoryList(res.categories)
       })
   }
@@ -50,7 +50,7 @@ function CategoryList() {
 
   return (
     <div className='mt-10 relative'>
-      
+
       {/* Affichage de la liste des catégories */}
       <div className='flex gap-4 overflow-auto scrollbar-hide' ref={listRef}>
         {categoryList && categoryList.map((category, index) => (

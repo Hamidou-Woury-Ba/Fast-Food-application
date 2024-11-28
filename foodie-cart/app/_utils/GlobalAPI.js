@@ -22,7 +22,7 @@ const getCategory = async () => {
 const getBusiness = async (category) => {
     const query = gql`
         query Business {
-            restaurants(where: {categories_some: {slug: "`+category+`"}}) {
+            restaurants(where: {categories_some: {slug: "`+ category + `"}}) {
                 aboutUs
                 addresse
                 banner {
@@ -43,5 +43,46 @@ const getBusiness = async (category) => {
     return result
 }
 
-export default { getCategory, getBusiness }
+const getBusinnesDetail = async (businessSlug) => {
+    const query = gql`
+        query RestaurantDetail {
+            restaurant(where: {slug: "`+ businessSlug + `"}) {
+                aboutUs
+                addresse
+                banner {
+                url
+                }
+                categories {
+                name
+                }
+                id
+                name
+                restoType
+                slug
+                workingHours
+                menu {
+                ... on Menu {
+                    id
+                    category
+                    menuItem {
+                    ... on MenuItem {
+                        id
+                        name
+                        description
+                        price
+                        productImage {
+                        url
+                        }
+                    }
+                    }
+                }
+                }
+            }
+        }     
+    `
+    const result = await request(MASTER_URL, query)
+    return result
+}
+
+export default { getCategory, getBusiness, getBusinnesDetail }
 
