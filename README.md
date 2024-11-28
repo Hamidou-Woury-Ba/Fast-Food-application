@@ -46,7 +46,12 @@ Mise en place d'une application de fast food en utilisant React, NextJS, Tailwin
  * Installation 
     npm add graphql-request graphql
 
-#   tailwind-scrollbar-hide
+# tailwind-scrollbar-hide
     Plugin Tailwind pour masquer les barres de défilement, bien que l’élément puisse toujours être défilé si le contenu de l’élément déborde.
  * Installation 
     npm i tailwind-scrollbar-hide
+
+# Flaticon
+    Contient des milliers d'icônes
+ * Site :
+    https://www.flaticon.com/

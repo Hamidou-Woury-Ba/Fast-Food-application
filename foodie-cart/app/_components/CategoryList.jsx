@@ -50,6 +50,8 @@ function CategoryList() {
 
   return (
     <div className='mt-10 relative'>
+      
+      {/* Affichage de la liste des catégories */}
       <div className='flex gap-4 overflow-auto scrollbar-hide' ref={listRef}>
         {categoryList && categoryList.map((category, index) => (
           <Link
@@ -58,12 +60,14 @@ function CategoryList() {
               `flex flex-col items-center gap-2 border p-3 rounded-xl min-w-28 hover:border-primary hover:bg-orange-50 cursor-pointer group 
               ${selectedCategory == category.slug && 'text-primary border-primary bg-orange-50'}`
             }>
-            <Image src={category.icon?.url} alt={category.name} width={40} height={40} className='group-hover:scale-125 transition-all duration-200' />
+            <Image src={category.icon?.url} alt={category.name} width={40} height={40} className='group-hover:scale-125 transition-all duration-200 h-[40px] object-cover' />
             <h2 className='text-sm font-medium group-hover:text-primary'>{category.name}</h2>
           </Link>
         ))
         }
       </div>
+
+      {/* Fleche de defilement vers la droite */}
       <ArrowRightCircle className='absolute top-9 -right-10 bg-gray-500 rounded-full text-white h-8 w-8 cursor-pointer' onClick={() => scrollRightHandler()} />
     </div>
   )
