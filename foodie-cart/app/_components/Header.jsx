@@ -1,16 +1,37 @@
 'use client';
 import { Button } from '@/components/ui/button'
 import { SignInButton, SignUpButton, UserButton, useUser } from '@clerk/nextjs'
-import { Search } from 'lucide-react'
+import { Search, ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { CartUpdateContext } from '../_context/CartUpdateContext'
+import GlobalApi from '../_utils/GlobalApi';
 
 function Header() {
 
     const { user, isSignedIn } = useUser()
 
+    const { updateCard, setUpdateCard } = useContext(CartUpdateContext)
+
+    const [cart, setCart] = useState([])
+
+    useEffect(() => {
+        if (user) {
+            GetUserCart();
+        }
+    }, [user, updateCard]); 
+
+    const GetUserCart = () => {
+        GlobalApi.getUserCart(user?.primaryEmailAddress?.emailAddress)
+            .then((res) => {
+                console.log(res);
+                setCart(res?.userCarts); 
+            })
+    };
+
+
     return (
-        <div className='flex justify-between items-center p-6 md:px-20 shadow-sm'>
+        <div className='flex justify-between items-center py-6 pr-6 shadow-sm'>
             <Image src="/logo.png" alt="logo" width={200} height={200} />
 
             {/* Barre de recherche */}
@@ -22,7 +43,17 @@ function Header() {
             {/* Login et sign-up */}
             {
                 isSignedIn ?
-                    <UserButton />
+                    <div className='flex items-center gap-3'>
+                        <div className='flex gap-2 items-center'>
+                            <ShoppingCart />
+                            <label
+                                className='p-1 px-3 rounded-full bg-slate-200'
+                            >
+                                {cart?.length}
+                            </label>
+                        </div>
+                        <UserButton />
+                    </div>
                     :
                     <div className='flex gap-5'>
                         <SignInButton mode='modal'>

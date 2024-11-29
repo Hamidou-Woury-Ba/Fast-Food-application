@@ -84,5 +84,40 @@ const getBusinnesDetail = async (businessSlug) => {
     return result
 }
 
-export default { getCategory, getBusiness, getBusinnesDetail }
+const addToCart = async (data) => {
+    const query = gql`
+        mutation AddToCart {
+            createUserCart(
+                data: {email: "`+ data?.email + `", productName: "` + data?.name + `", price: ` + data?.price + `, productImage: "` + data?.productImage + `", productDescription: "` + data?.description + `"}
+            ) {
+                id
+            }
+            publishManyUserCartsConnection(to: PUBLISHED) {
+                aggregate {
+                count
+                }
+            }
+        }
+    `
+    const result = await request(MASTER_URL, query)
+    return result
+}
+
+const getUserCart = async (userEmail) => {
+    const query = gql`
+        query GetUserCart {
+            userCarts(where: {email: "`+ userEmail + `"}) {
+                id
+                price
+                productDescription
+                productImage
+                productName
+            }
+        }
+    `
+    const result = await request(MASTER_URL, query)
+    return result
+}
+
+export default { getCategory, getBusiness, getBusinnesDetail, addToCart, getUserCart }
 

@@ -1,12 +1,20 @@
+import GlobalApi from '@/app/_utils/GlobalApi'
 import { Button } from '@/components/ui/button'
+import { useUser } from '@clerk/nextjs'
 import { SquarePlus } from 'lucide-react'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { toast } from 'sonner'
+import { CartUpdateContext } from '../../../_context/CartUpdateContext'
 
 // Menu Section Component
 function MenuSection({ restaurant }) {
 
   const [menuItemList, setMenuItemList] = useState([])
+
+  const {user} = useUser()
+
+  const {updateCard, setUpdateCard} = useContext(CartUpdateContext)
 
   useEffect(() => {
     restaurant?.menu && FilterMenu(restaurant.menu[0].category)
@@ -17,6 +25,31 @@ function MenuSection({ restaurant }) {
     const result = restaurant?.menu?.filter((item) => item.category === category)
     console.log(result)
     setMenuItemList(result[0])
+  }
+
+  // Ajouter au panier 
+  const AddToCartHandler = (item) => {
+    toast('Adding to cart')
+
+    // Données à envoyer au panier
+    const data = {
+      email: user?.primaryEmailAddress?.emailAddress,
+      name: item?.name,
+      price: item?.price,
+      productImage: item?.productImage?.url, 
+      description: item?.description
+    }
+
+    console.log(data)
+
+    // Ajouter au panier 
+    GlobalApi.addToCart(data).then((res) => {
+      console.log(res)
+      setUpdateCard(!updateCard) // Mettre à jour le panier 
+      toast('Added to cart')
+    },(error) => {
+      toast('Failed to add to cart')
+    })
   }
 
   return (
@@ -59,7 +92,7 @@ function MenuSection({ restaurant }) {
                     <h2 className='font-bold'>{item.name}</h2>
                     <h2>{item.price}</h2>
                     <h2 className='text-sm text-gray-400 line-clamp-2'>{item.description}</h2>
-                    <SquarePlus />
+                    <SquarePlus className='cursor-pointer' onClick={() => AddToCartHandler(item)} />
                   </div>
                 </div>
               ))
