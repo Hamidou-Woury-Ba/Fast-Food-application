@@ -18,15 +18,16 @@ function BusinessList() {
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        params && setCategory(params.get('category'))
-        params && getBusinessList(params.get('category'))
+        params && setCategory(params.get('category') || 'all')
+        params && getBusinessList(params.get('category') || 'all')
+        
     }, [params])
 
     const getBusinessList = (category_) => {
         setLoading(true)
         GlobalApi.getBusiness(category_)
             .then((res) => {
-                // console.log(res);
+                console.log(res);
                 setBusinessList(res?.restaurants)
                 setLoading(false)
             });
