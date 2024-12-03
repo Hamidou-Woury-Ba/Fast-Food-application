@@ -25,7 +25,7 @@ function RestaurantDetails() {
     }
 
     return (
-        <div>
+        <div className='pt-20'>
             <Intro restaurant={restaurant} />
             <RestoTabs restaurant={restaurant} />
         </div>

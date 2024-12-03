@@ -5,10 +5,55 @@ import BusinessList from './_components/BusinessList'
 export default function Home() {
 
   return (
-    <div>
+    <div className="pt-20">
       <CategoryList />
 
       <BusinessList />
+
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac 
+        ultricies nunc. Nullam sit amet sapien et nunc fermentum
+        consectetur. Nam auctor, nunc vel
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac 
+        ultricies nunc. Nullam sit amet sapien et nunc fermentum
+        consectetur. Nam auctor, nunc vel
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac 
+        ultricies nunc. Nullam sit amet sapien et nunc fermentum
+        consectetur. Nam auctor, nunc vel
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac 
+        ultricies nunc. Nullam sit amet sapien et nunc fermentum
+        consectetur. Nam auctor, nunc vel
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac 
+        ultricies nunc. Nullam sit amet sapien et nunc fermentum
+        consectetur. Nam auctor, nunc vel
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac 
+        ultricies nunc. Nullam sit amet sapien et nunc fermentum
+        consectetur. Nam auctor, nunc vel
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac 
+        ultricies nunc. Nullam sit amet sapien et nunc fermentum
+        consectetur. Nam auctor, nunc vel
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac 
+        ultricies nunc. Nullam sit amet sapien et nunc fermentum
+        consectetur. Nam auctor, nunc vel
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac 
+        ultricies nunc. Nullam sit amet sapien et nunc fermentum
+        consectetur. Nam auctor, nunc vel
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac 
+        ultricies nunc. Nullam sit amet sapien et nunc fermentum
+        consectetur. Nam auctor, nunc vel
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac 
+        ultricies nunc. Nullam sit amet sapien et nunc fermentum
+        consectetur. Nam auctor, nunc vel
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac 
+        ultricies nunc. Nullam sit amet sapien et nunc fermentum
+        consectetur. Nam auctor, nunc vel
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac 
+        ultricies nunc. Nullam sit amet sapien et nunc fermentum
+        consectetur. Nam auctor, nunc vel
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac 
+        ultricies nunc. Nullam sit amet sapien et nunc fermentum
+        consectetur. Nam auctor, nunc vel
+      </div>
     </div>
   );
 }

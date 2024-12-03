@@ -7,7 +7,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { CartUpdateContext } from '../_context/CartUpdateContext'
 import GlobalApi from '../_utils/GlobalApi';
 
-function Header() {
+function Header({ ref, top }) {
 
     const { user, isSignedIn } = useUser()
 
@@ -19,53 +19,58 @@ function Header() {
         if (user) {
             GetUserCart();
         }
-    }, [user, updateCard]); 
+    }, [user, updateCard]);
 
     const GetUserCart = () => {
         GlobalApi.getUserCart(user?.primaryEmailAddress?.emailAddress)
             .then((res) => {
                 console.log(res);
-                setCart(res?.userCarts); 
+                setCart(res?.userCarts);
             })
     };
 
 
     return (
-        <div className='flex justify-between items-center py-6 pr-6 shadow-sm'>
-            <Image src="/logo.png" alt="logo" width={200} height={200} />
+        <header ref={ref} className={`fixed w-screen ${top < 0 ? "-top-[100px]" : "top-0"} z-[1000]`} style={{
+            transition: "top 0.6s",
+            backgroundColor: "#FFF"
+        }}>
+            <div className='flex justify-between items-center py-6 pr-36 shadow-sm w-full'>
+                <Image src="/logo.png" alt="logo" width={200} height={200} />
 
-            {/* Barre de recherche */}
-            <div className='hidden md:flex border p-2 rounded-lg bg-gray-200 w-96'>
-                <input type="text" className='bg-transparent w-full outline-none' />
-                <Search />
-            </div>
+                {/* Barre de recherche */}
+                <div className='hidden md:flex border p-2 rounded-lg bg-gray-200 w-96'>
+                    <input type="text" className='bg-transparent w-full outline-none' />
+                    <Search />
+                </div>
 
-            {/* Login et sign-up */}
-            {
-                isSignedIn ?
-                    <div className='flex items-center gap-3'>
-                        <div className='flex gap-2 items-center'>
-                            <ShoppingCart />
-                            <label
-                                className='p-1 px-3 rounded-full bg-slate-200'
-                            >
-                                {cart?.length}
-                            </label>
+                {/* Login et sign-up */}
+                {
+                    isSignedIn ?
+                        <div className='flex items-center gap-3'>
+                            <div className='flex gap-2 items-center'>
+                                <ShoppingCart />
+                                <label
+                                    className='p-1 px-3 rounded-full bg-slate-200'
+                                >
+                                    {cart?.length}
+                                </label>
+                            </div>
+                            <UserButton />
                         </div>
-                        <UserButton />
-                    </div>
-                    :
-                    <div className='flex gap-5'>
-                        <SignInButton mode='modal'>
-                            <Button variant='outline'>Login</Button>
-                        </SignInButton>
+                        :
+                        <div className='flex gap-5'>
+                            <SignInButton mode='modal'>
+                                <Button variant='outline'>Login</Button>
+                            </SignInButton>
 
-                        <SignUpButton mode='modal'>
-                            <Button>Sign Up</Button>
-                        </SignUpButton>
-                    </div>
-            }
-        </div>
+                            <SignUpButton mode='modal'>
+                                <Button>Sign Up</Button>
+                            </SignUpButton>
+                        </div>
+                }
+            </div>
+        </header>
     )
 }
 
